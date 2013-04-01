@@ -1,5 +1,2 @@
-require "jsonizer/version"
-
-module Jsonizer
-  # Your code goes here...
-end
+require 'jsonizer/version'
+require 'jsonizer/jsonizer'
