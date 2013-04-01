@@ -1,3 +1,4 @@
+require 'json'
 class Jsonizer < Module
   def initialize *attributes
     @attributes = attributes
