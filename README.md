@@ -10,30 +10,57 @@
 
 # Jsonizer
 
-TODO: Write a gem description
+Module to easily provide json serialization
+
+It was structurally inspired by http://github.com/dkubb/equalizer
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Using [Bundler](http://gembundler.com) (recommended)
 
-    gem 'jsonizer'
+  -[] Add `gem 'jsonizer'` to your Gemfile
+  -[] Run `bundle install`
 
-And then execute:
+Using rubygems
 
-    $ bundle
+  -[] Run `gem install jsonizer`
 
-Or install it yourself as:
+Installing from git
 
-    $ gem install jsonizer
+  -[] Clone the repository using `git clone git://github.com/voidus/jsonizer`
+  -[] Enter the directory using `cd jsonizer`
+  -[] Build and install the gem with `rake install`
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class TransferObject
+  include Jsonizer.new :operation_id, :parameter
+
+  attr_reader :operation_id, :parameter
+  attr_accessor :calculation_strategy
+
+  def initialize operation_id, parameter, transient = "default transient attribute"
+    @operation_id = operation_id
+    @parameter = parameter
+    @transient_attribute = transient
+  end
+end
+
+TestTransferObject.new("add", [15, 20], 'transient').to_json nil # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
+JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))  # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
+JSON.load(JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))).inspect
+  # #<TestTransferObject:0x000000018ae188 @operation_id="add", @parameter=[15, 20], @transient_attribute="default transient attribute">
+JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param")))
+  # {"json_class":"TestTransferObject","operation_id":"nested","parameter":{"json_class":"TestTransferObject","operation_id":"op","parameter":"param"}}
+JSON.load(JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param"))))
+  # <TestTransferObject:0x0000000268d308 @operation_id="nested", @parameter=#<TestTransferObject:0x0000000268d5b0 @operation_id="op", @parameter="param", @transient_attribute="default transient attribute">, @transient_attribute="default transient attribute">
+```
 
 ## Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
+3. Commit your tests and changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
