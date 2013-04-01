@@ -8,9 +8,12 @@ Gem::Specification.new do |gem|
   gem.version       = Jsonizer::VERSION
   gem.authors       = ["Simon Kohlmeyer"]
   gem.email         = ["simon.kohlmeyer@gmail.com"]
-  gem.description   = 'Module to easily provide json serialization'
-  gem.summary       = gem.description
-  gem.homepage      = ""
+  gem.summary       = 'Module to easily provide json serialization'
+  gem.description   = <<HERE
+#{gem.summary}
+Structurally inspired by http://github.com/dkubb/equalizer
+HERE
+  gem.homepage      = "http://github.com/voidus/jsonizer"
   gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($/)
