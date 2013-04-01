@@ -18,18 +18,18 @@ It was structurally inspired by http://github.com/dkubb/equalizer
 
 Using [Bundler](http://gembundler.com) (recommended)
 
-  -[] Add `gem 'jsonizer'` to your Gemfile
-  -[] Run `bundle install`
+  * Add `gem 'jsonizer'` to your Gemfile
+  * Run `bundle install`
 
 Using rubygems
 
-  -[] Run `gem install jsonizer`
+  * Run `gem install jsonizer`
 
 Installing from git
 
-  -[] Clone the repository using `git clone git://github.com/voidus/jsonizer`
-  -[] Enter the directory using `cd jsonizer`
-  -[] Build and install the gem with `rake install`
+  * Clone the repository using `git clone git://github.com/voidus/jsonizer`
+  * Enter the directory using `cd jsonizer`
+  * Build and install the gem with `rake install`
 
 ## Usage
 
@@ -47,14 +47,34 @@ class TransferObject
   end
 end
 
-TestTransferObject.new("add", [15, 20], 'transient').to_json nil # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
-JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))  # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
+TestTransferObject.new("add", [15, 20], 'transient').to_json nil
+  # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
+
+JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))
+  # {"json_class":"TestTransferObject","operation_id":"add","parameter":[15,20]}
+
 JSON.load(JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))).inspect
-  # #<TestTransferObject:0x000000018ae188 @operation_id="add", @parameter=[15, 20], @transient_attribute="default transient attribute">
+  # #<TestTransferObject:0x000000018ae188
+      @operation_id="add",
+      @parameter=[15, 20],
+      @transient_attribute="default transient attribute">
+
 JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param")))
-  # {"json_class":"TestTransferObject","operation_id":"nested","parameter":{"json_class":"TestTransferObject","operation_id":"op","parameter":"param"}}
+  # {"json_class":"TestTransferObject",
+     "operation_id":"nested",
+     "parameter":
+        {"json_class":"TestTransferObject",
+         "operation_id":"op",
+         "parameter":"param"}}
+
 JSON.load(JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param"))))
-  # <TestTransferObject:0x0000000268d308 @operation_id="nested", @parameter=#<TestTransferObject:0x0000000268d5b0 @operation_id="op", @parameter="param", @transient_attribute="default transient attribute">, @transient_attribute="default transient attribute">
+  # <TestTransferObject:0x0000000268d308
+      @operation_id="nested",
+      @parameter=#<TestTransferObject:0x0000000268d5b0
+                   @operation_id="op",
+                   @parameter="param",
+                   @transient_attribute="default transient attribute">,
+      @transient_attribute="default transient attribute">
 ```
 
 ## Contributing
