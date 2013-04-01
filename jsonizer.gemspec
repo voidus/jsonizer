@@ -2,6 +2,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jsonizer/version'
+require 'rake'
 
 Gem::Specification.new do |gem|
   gem.name          = "jsonizer"
@@ -16,7 +17,7 @@ HERE
   gem.homepage      = "http://github.com/voidus/jsonizer"
   gem.license       = "MIT"
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = FileList['lib/**/*.rb', 'spec/**/*', '[A-Z]*'].to_a
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
