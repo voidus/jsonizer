@@ -29,4 +29,6 @@ HERE
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "equalizer"
+  gem.add_development_dependency "yard"
+  gem.add_development_dependency "redcarpet"
 end
