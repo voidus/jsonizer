@@ -75,4 +75,10 @@ describe Jsonizer do
       its(:unrelated_attribute) {should eql 'default_unrelated_attribute'}
     end
   end
+
+  context "Anonymous classes" do
+    it "should throw when included" do
+      expect {Class.new do include Jsonizer.new end}.to raise_error ArgumentError
+    end
+  end
 end

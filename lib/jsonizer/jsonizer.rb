@@ -5,6 +5,7 @@ class Jsonizer < Module
   end
 
   def included mod
+    raise ArgumentError, "Cannot jsonize anonymous classes. They cannot be restored." unless mod.name
     mod.extend(class_methods_module @attributes)
   end
 
