@@ -55,26 +55,26 @@ JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))
 
 JSON.load(JSON.dump(TestTransferObject.new("add", [15, 20], 'transient))).inspect
   # #<TestTransferObject:0x000000018ae188
-      @operation_id="add",
-      @parameter=[15, 20],
-      @transient_attribute="default transient attribute">
+  #   @operation_id="add",
+  #   @parameter=[15, 20],
+  #   @transient_attribute="default transient attribute">
 
 JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param")))
   # {"json_class":"TestTransferObject",
-     "operation_id":"nested",
-     "parameter":
-        {"json_class":"TestTransferObject",
-         "operation_id":"op",
-         "parameter":"param"}}
+  #  "operation_id":"nested",
+  #  "parameter":
+  #     {"json_class":"TestTransferObject",
+  #      "operation_id":"op",
+  #      "parameter":"param"}}
 
 JSON.load(JSON.dump(TestTransferObject.new("nested", TestTransferObject.new("op", "param"))))
   # <TestTransferObject:0x0000000268d308
-      @operation_id="nested",
-      @parameter=#<TestTransferObject:0x0000000268d5b0
-                   @operation_id="op",
-                   @parameter="param",
-                   @transient_attribute="default transient attribute">,
-      @transient_attribute="default transient attribute">
+  #   @operation_id="nested",
+  #   @parameter=#<TestTransferObject:0x0000000268d5b0
+  #                @operation_id="op",
+  #                @parameter="param",
+  #                @transient_attribute="default transient attribute">,
+  #   @transient_attribute="default transient attribute">
 ```
 
 ## Contributing
