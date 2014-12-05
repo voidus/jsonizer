@@ -26,7 +26,8 @@ HERE
 
   gem.add_development_dependency "bundler"
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "rspec", "~>2.0"
+  gem.add_development_dependency "rspec"
+  gem.add_development_dependency "rspec-its"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "equalizer"
   gem.add_development_dependency "yard"
