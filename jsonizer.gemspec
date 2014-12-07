@@ -22,13 +22,13 @@ HERE
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'json'
+  gem.add_dependency 'json', "~>1.8"
 
   gem.add_development_dependency "bundler"
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "rspec"
-  gem.add_development_dependency "rspec-its"
-  gem.add_development_dependency "simplecov"
+  gem.add_development_dependency "rspec", "~> 3.1"
+  gem.add_development_dependency "rspec-its", "~> 1.1"
+  gem.add_development_dependency "simplecov", "~> 0.9"
   gem.add_development_dependency "equalizer"
   gem.add_development_dependency "yard"
   gem.add_development_dependency "redcarpet"
