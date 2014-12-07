@@ -1,3 +1,4 @@
 class Jsonizer < Module
-  VERSION = "0.1.0"
+  # The current version of this gem
+  VERSION = '0.1.0'
 end
