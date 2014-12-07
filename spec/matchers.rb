@@ -7,7 +7,7 @@ RSpec::Matchers.define :be_same_class_after_json do
     to_json_and_back(subject).class.equal? subject.class
   end
 
-  failure_message_for_should do |subject|
+  failure_message do |subject|
     actual = to_json_and_back subject
     <<HERE
 expected #{subject.inspect} to be the same class after json dump-load
@@ -26,14 +26,14 @@ RSpec::Matchers.define :be_eql_after_json do
     to_json_and_back(subject).eql? subject
   end
 
-  failure_message_for_should do |subject|
+  failure_message do |subject|
     <<HERE
 expected #{subject.inspect} to be eql after json dump-load
 got      #{to_json_and_back(subject).inspect} instead"
 HERE
   end
 
-  failure_message_for_should_not do |subject|
+  failure_message_when_negated do |subject|
     <<HERE
 expected #{subject.inspect} not to be eql after json dump-load
 (got     #{to_json_and_back(subject).inspect} after dump/load)"

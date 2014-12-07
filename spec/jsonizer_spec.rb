@@ -5,7 +5,7 @@ require 'equalizer'
 
 describe Jsonizer do
   it 'should have a version number' do
-    Jsonizer::VERSION.should_not be_nil
+    expect(Jsonizer::VERSION).not_to be_nil
   end
 
   context 'When included without parameters' do
@@ -15,9 +15,9 @@ describe Jsonizer do
 
     subject { NoParamIncludeClass.new }
 
-    it {  should respond_to :to_json }
-    its(:class) { should respond_to :json_create }
-    it { should be_same_class_after_json }
+    it {  is_expected.to respond_to :to_json }
+    its(:class) { is_expected.to respond_to :json_create }
+    it { is_expected.to be_same_class_after_json }
   end
 
   context 'With a jsonized and an unrelated attribute' do
@@ -34,16 +34,16 @@ describe Jsonizer do
 
     let(:original) { WithUnrelated.new 'original_jsonized_attribute', 'original_unrelated_attribute' }
     subject { original }
-    it { should respond_to :to_json }
-    its(:class) { should respond_to :json_create }
-    it { should be_same_class_after_json }
-    it { should_not be_eql_after_json }
+    it { is_expected.to respond_to :to_json }
+    its(:class) { is_expected.to respond_to :json_create }
+    it { is_expected.to be_same_class_after_json }
+    it { is_expected.not_to be_eql_after_json }
 
     describe 'after json conversion' do
       subject { JSON.load(JSON.dump(original)) }
-      its(:jsonized_attribute) { should eql original.jsonized_attribute }
-      its(:unrelated_attribute) { should_not eql original.unrelated_attribute }
-      its(:unrelated_attribute) { should eql 'default_unrelated_attribute' }
+      its(:jsonized_attribute) { is_expected.to eql original.jsonized_attribute }
+      its(:unrelated_attribute) { is_expected.not_to eql original.unrelated_attribute }
+      its(:unrelated_attribute) { is_expected.to eql 'default_unrelated_attribute' }
     end
   end
 
@@ -63,17 +63,17 @@ describe Jsonizer do
     let(:original) { Multiple.new 'original_jsonized_a', 1024, 'original_unrelated_attribute' }
     subject { original }
 
-    it { should respond_to :to_json }
-    its(:class) { should respond_to :json_create }
-    it { should be_same_class_after_json }
-    it { should_not be_eql_after_json }
+    it { is_expected.to respond_to :to_json }
+    its(:class) { is_expected.to respond_to :json_create }
+    it { is_expected.to be_same_class_after_json }
+    it { is_expected.not_to be_eql_after_json }
 
     describe 'after json conversion' do
       subject { JSON.load(JSON.dump(original)) }
-      its(:jsonized_a) { should eql original.jsonized_a }
-      its(:jsonized_b) { should eql original.jsonized_b }
-      its(:unrelated_attribute) { should_not eql original.unrelated_attribute }
-      its(:unrelated_attribute) { should eql 'default_unrelated_attribute' }
+      its(:jsonized_a) { is_expected.to eql original.jsonized_a }
+      its(:jsonized_b) { is_expected.to eql original.jsonized_b }
+      its(:unrelated_attribute) { is_expected.not_to eql original.unrelated_attribute }
+      its(:unrelated_attribute) { is_expected.to eql 'default_unrelated_attribute' }
     end
   end
 
