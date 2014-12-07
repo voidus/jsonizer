@@ -9,7 +9,7 @@ class Jsonizer < Module
   #
   # @param [Array<Symbol>] attributes
   # @return [undefined]
-  def initialize *attributes
+  def initialize(*attributes)
     @attributes = attributes
     define_as_json
     define_to_json
@@ -19,8 +19,8 @@ class Jsonizer < Module
   #
   # @param mod [Module]
   # @return [undefined]
-  def included mod
-    raise ArgumentError, "Cannot jsonize anonymous classes. They cannot be restored." unless mod.name
+  def included(mod)
+    raise ArgumentError, 'Cannot jsonize anonymous classes. They cannot be restored.' unless mod.name
     mod.extend(class_methods_module)
   end
 
@@ -32,7 +32,7 @@ private
   def define_as_json
     attributes = @attributes
     define_method :as_json do |*|
-      hash = {'json_class' => self.class.name}
+      hash = { 'json_class' => self.class.name }
       attributes.each do |attribute|
         hash[attribute.to_s] = self.send(attribute.to_sym)
       end
@@ -58,7 +58,7 @@ private
     attributes = @attributes
     Module.new do
       define_method :json_create do |values|
-        params = attributes.map {|attribute| values[attribute.to_s]}
+        params = attributes.map { |attribute| values[attribute.to_s] }
         new(*params)
       end
     end

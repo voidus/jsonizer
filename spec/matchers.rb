@@ -1,4 +1,4 @@
-def to_json_and_back obj
+def to_json_and_back(obj)
   JSON.load(JSON.dump(obj))
 end
 
@@ -17,7 +17,7 @@ HERE
   end
 
   description do
-    "be the same class after JSON.dump and JSON.load"
+    'be the same class after JSON.dump and JSON.load'
   end
 end
 
@@ -41,6 +41,6 @@ HERE
   end
 
   description do
-    "be the eql after JSON.dump and JSON.load"
+    'be the eql after JSON.dump and JSON.load'
   end
 end
