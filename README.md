@@ -3,14 +3,8 @@
 [![Code Climate](https://codeclimate.com/github/voidus/jsonizer.png)](https://codeclimate.com/github/voidus/jsonizer)
 [![Coverage Status](https://coveralls.io/repos/voidus/jsonizer/badge.png?branch=master)](https://coveralls.io/r/voidus/jsonizer)
 [![Dependencies](https://gemnasium.com/voidus/jsonizer.png)](https://gemnasium.com/voidus/jsonizer)
-[![Documentation](http://inch-ci.org/github/voidus/jsonizer.svg?branch=master)](http://inch-ci.org/github/guard/guard)
+[![Documentation](http://inch-ci.org/github/voidus/jsonizer.svg?branch=master)](http://inch-ci.org/github/voidus/linknew)
 [![PullReview stats](https://www.pullreview.com/github/voidus/jsonizer/badges/master.svg?)](https://www.pullreview.com/github/voidus/jsonizer/reviews/master)
-
-[gem version]: http://badge.fury.io/rb/jsonizer
-[travis]: https://travis-ci.org/voidus/jsonizer
-[codeclimate]: https://codeclimate.com/github/voidus/jsonizer
-[coveralls]: https://coveralls.io/r/voidus/jsonizer
-[dependencies]: https://gemnasium.com/voidus/jsonizer
 
 # Jsonizer
 
